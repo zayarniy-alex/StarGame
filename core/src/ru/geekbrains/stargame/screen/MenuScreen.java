@@ -22,7 +22,7 @@ import ru.geekbrains.stargame.screen.sprites.Star;
 
 public class MenuScreen extends Base2DScreen implements ActionListener {
 
-    private static final int STAR_COUNT = 256;
+    static final int STAR_COUNT = 256;
 
     private static final float BUTTON_PRESS_SCALE = 0.9f;
     private static final float BUTTON_HEIGHT = 0.15f;
