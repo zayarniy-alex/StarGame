@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
 import ru.geekbrains.stargame.math.Rect;
+import ru.geekbrains.stargame.utils.Regions;
 
 
 public class Sprite extends Rect {
@@ -13,6 +14,10 @@ public class Sprite extends Rect {
     protected float scale = 1f;
     protected TextureRegion[] regions;
     protected int frame;
+    protected boolean isDestroyed = false;
+
+    public Sprite() {
+    }
 
     public Sprite(TextureRegion region) {
         if (region == null) {
@@ -20,6 +25,10 @@ public class Sprite extends Rect {
         }
         regions = new TextureRegion[1];
         regions[0] = region;
+    }
+
+    public Sprite(TextureRegion region, int rows, int cols, int frames) {
+        this.regions = Regions.split(region, rows, cols, frames);
     }
 
     public void draw(SpriteBatch batch) {
@@ -70,5 +79,17 @@ public class Sprite extends Rect {
 
     public void setScale(float scale) {
         this.scale = scale;
+    }
+
+    public void destroy() {
+        this.isDestroyed = true;
+    }
+
+    public void flushDestroy() {
+        this.isDestroyed = false;
+    }
+
+    public boolean isDestroyed() {
+        return isDestroyed;
     }
 }

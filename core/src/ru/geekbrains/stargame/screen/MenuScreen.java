@@ -2,6 +2,7 @@ package ru.geekbrains.stargame.screen;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -11,8 +12,8 @@ import com.badlogic.gdx.math.Vector2;
 import ru.geekbrains.stargame.base.ActionListener;
 import ru.geekbrains.stargame.base.Base2DScreen;
 import ru.geekbrains.stargame.math.Rect;
-import ru.geekbrains.stargame.screen.menu.ButtomNewGame;
-import ru.geekbrains.stargame.screen.menu.ButtonExit;
+import ru.geekbrains.stargame.screen.menuscreen.ButtomNewGame;
+import ru.geekbrains.stargame.screen.menuscreen.ButtonExit;
 import ru.geekbrains.stargame.screen.sprites.Background;
 import ru.geekbrains.stargame.screen.sprites.Star;
 
@@ -22,7 +23,7 @@ import ru.geekbrains.stargame.screen.sprites.Star;
 
 public class MenuScreen extends Base2DScreen implements ActionListener {
 
-    static final int STAR_COUNT = 256;
+    private static final int STAR_COUNT = 256;
 
     private static final float BUTTON_PRESS_SCALE = 0.9f;
     private static final float BUTTON_HEIGHT = 0.15f;
@@ -38,6 +39,8 @@ public class MenuScreen extends Base2DScreen implements ActionListener {
     public MenuScreen(Game game) {
         super(game);
     }
+
+    Music music = Gdx.audio.newMusic(Gdx.files.internal("menu.mp3"));
 
     @Override
     public void show() {
@@ -67,6 +70,7 @@ public class MenuScreen extends Base2DScreen implements ActionListener {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.begin();
+        music.play();
         background.draw(batch);
         for (int i = 0; i < star.length; i++) {
             star[i].draw(batch);
@@ -87,6 +91,7 @@ public class MenuScreen extends Base2DScreen implements ActionListener {
         super.dispose();
         bgTexture.dispose();
         atlas.dispose();
+        music.dispose();
     }
 
     @Override

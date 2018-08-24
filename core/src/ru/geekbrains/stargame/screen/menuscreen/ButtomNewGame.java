@@ -1,4 +1,4 @@
-package ru.geekbrains.stargame.screen.menu;
+package ru.geekbrains.stargame.screen.menuscreen;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
