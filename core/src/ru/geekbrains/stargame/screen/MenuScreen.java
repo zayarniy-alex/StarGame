@@ -28,7 +28,6 @@ public class MenuScreen extends Base2DScreen implements ActionListener {
     private static final float BUTTON_PRESS_SCALE = 0.9f;
     private static final float BUTTON_HEIGHT = 0.15f;
 
-    private Music music;
     private Background background;
     private Texture bgTexture;
     private TextureAtlas atlas;
@@ -36,6 +35,7 @@ public class MenuScreen extends Base2DScreen implements ActionListener {
     private ButtonExit buttonExit;
     private ButtomNewGame buttomNewGame;
 
+    Music music = Gdx.audio.newMusic(Gdx.files.internal("sounds/menu.mp3"));
 
     public MenuScreen(Game game) {
         super(game);
@@ -44,8 +44,6 @@ public class MenuScreen extends Base2DScreen implements ActionListener {
     @Override
     public void show() {
         super.show();
-        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/menu.mp3"));
-        music.setLooping(true);
         music.play();
         bgTexture = new Texture("textures/bg.png");
         background = new Background(new TextureRegion(bgTexture));
