@@ -36,9 +36,9 @@ public class MainShip extends Ship {
     public void startNewGame() {
         this.bulletHeight = 0.01f;
         this.bulletV.set(0, 0.5f);
-        this.bulletDamage = 100;
+        this.bulletDamage = 1;
         this.reloadInterval = 0.4f;
-        this.hp = 1;
+        this.hp = 100;
         flushDestroy();
     }
 
@@ -78,9 +78,6 @@ public class MainShip extends Ship {
             case Input.Keys.RIGHT:
                 pressedRight = true;
                 moveRight();
-                break;
-            case Input.Keys.UP:
-                shoot();
                 break;
         }
     }
@@ -160,5 +157,6 @@ public class MainShip extends Ship {
                 || bullet.getBottom() > pos.y
                 || bullet.getTop() < getBottom());
     }
+
 
 }
